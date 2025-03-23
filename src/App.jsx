@@ -1,11 +1,11 @@
 import React from 'react';
 import { Route, Routes} from 'react-router-dom';
-import Home from './components/Home/Home';
+import Home from './components/Home/Home.jsx';
 import "./App.css";
 import About from './components/About/About';
-import ServiceProvidersPage from './components/Service Providers/serviceProvidersPage';
+import ServiceProvidersPage from './components/ServiceProviders/serviceProvidersPage';
 import Navbar from './components/Extras/Navbar';
-import ServiceProviderDetailsPage from './components/Service Providers/ServiceProviderDetailsPage';
+import ServiceProviderDetailsPage from './components/ServiceProviders/ServiceProviderDetailsPage';
 import Login from './components/AuthPages/Login';
 
 function App() {
