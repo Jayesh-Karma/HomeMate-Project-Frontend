@@ -31,13 +31,13 @@ const Login = () => {
         const users = await loginProvider(loginData.email, loginData.password);
         console.log(users);
         if(users.success == false){
-            toast.error("Error in login try again later");
+            // toast.error("Error in login try again later");
             navigate("/login");
         }
         else{
             // axios.defaults.headers.common["Authorization"] = `Bearer ${users.token}`;
             localStorage.setItem("token", users.token);
-            toast.success("Login Successful");
+            // toast.success("Login Successful");
             navigate("/")
         }
     }
