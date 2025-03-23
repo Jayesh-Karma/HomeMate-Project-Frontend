@@ -3,10 +3,10 @@ import { Route, Routes} from 'react-router-dom';
 import Home from './components/Home/Home.jsx';
 import "./App.css";
 import About from './components/About/About';
-import ServiceProvidersPage from './components/ServiceProviders/serviceProvidersPage';
 import Navbar from './components/Extras/Navbar';
-import ServiceProviderDetailsPage from './components/ServiceProviders/ServiceProviderDetailsPage';
 import Login from './components/AuthPages/Login';
+import ServiceProvidersPage from './components/ServiceProvider/ServiceProvidersPage';
+import ServiceProviderDetailsPage from './components/ServiceProvider/ServiceProviderDetailsPage';
 
 function App() {
 
@@ -14,7 +14,7 @@ function App() {
     <>
     <div>
       <Navbar />
-    </div>
+    </div>  
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/about" element={<About/>} />

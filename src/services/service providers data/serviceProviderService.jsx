@@ -27,7 +27,7 @@ export const getAllServiceProviders = async()=>{
 export const getServiceProvidersByService = async(service)=>{
     try {
         const users = await api.get(`/search/get_serviceproviders_by_service/${service}`);
-        console.log(users.data)
+        console.log(users)
         return users.data;
     } catch (error) {
         return null;
