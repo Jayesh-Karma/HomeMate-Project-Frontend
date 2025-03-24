@@ -2,7 +2,7 @@ import { EyeClosed } from 'lucide-react'
 import React, { useState } from 'react'
 import { RxEyeClosed, RxEyeOpen } from 'react-icons/rx';
 import { loginProvider } from '../../services/service providers data/serviceProviderService';
-import { toast } from 'react-toastify';
+import { toast } from 'react-hot-toast'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
@@ -30,15 +30,16 @@ const Login = () => {
         // calling api
         const users = await loginProvider(loginData.email, loginData.password);
         console.log(users);
-        if(users.success == false){
-            // toast.error("Error in login try again later");
-            navigate("/login");
+        if(!users){
+            toast.error("Error in login try again later");
+            navigate("/login");   
         }
         else{
             // axios.defaults.headers.common["Authorization"] = `Bearer ${users.token}`;
             localStorage.setItem("token", users.token);
-            // toast.success("Login Successful");
+            toast.success("Login Successful");
             navigate("/")
+            location.reload();
         }
     }
   return (
@@ -81,7 +82,7 @@ const Login = () => {
 
                     <div className=' flex flex-col gap-2'>
                         <button
-                        className='text-white bg-[#7C00FE] rounded-4xl w-full p-3 font-bold'
+                        className='text-white cursor-pointer  bg-[#7C00FE] rounded-4xl w-full p-3 font-bold '
                         onClick={handleLogin}
                         >
                             Login
@@ -90,7 +91,7 @@ const Login = () => {
                         <div>
                             <p className=' text-xs text-gray-500'>Need Help?</p>
                             <p>Don't have an account? 
-                                <a href="" className=' text-[#7C00FE]'>Sign Up</a>
+                                <a className=' text-[#7C00FE]' onClick={() => navigate("/signup")}>Sign Up</a>
                             </p>
                         </div>
                     </div>

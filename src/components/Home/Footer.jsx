@@ -4,31 +4,46 @@ import { FaLocationArrow, FaLocationPin, FaLocationPinLock, FaRegMessage } from 
 
 const Footer = () => {
   return (
-    <div className='w-[90%] h-72 flex justify-between items-center'> 
-
-    <div className='flex flex-col justify-start items-start'>
-      <div className='flex flex-col items-start h-30'>
-          <img src="./Logo/HOME_MATE-removebg-preview.png" className=' w-52 h-15' alt="" />
-          <p className=' text-white'>One Stop Platform For All Home Services</p>
+    <div className="w-full p-5 max-w-7xl mx-auto flex flex-wrap lg:flex-nowrap justify-between items-start text-white py-6 gap-6">
+    {/* Left Section */}
+    <div className="flex flex-col items-start gap-4">
+      {/* Logo & Tagline */}
+      <div className="flex flex-col items-start">
+        <img
+          src="/HOME_MATE-removebg-preview.png"
+          className="w-40 sm:w-52"
+          alt="Home Mate Logo"
+        />
+        <p className="text-sm sm:text-base">One Stop Platform For All Home Services</p>
       </div>
-      <div className='flex flex-col items-start text-white'>
-          <p className='flex items-center gap-4'> <FaLocationPinLock/>  Indore</p>
-          <p className='flex items-center gap-4'> <FaRegMessage/> homemate.services@gmail.com</p>
-          <p className='flex items-center gap-4'> <BsPhone/> +1800 854-36-80</p>
+  
+      {/* Contact Details */}
+      <div className="flex flex-col gap-2 text-sm sm:text-base">
+        <p className="flex items-center gap-2">
+          <FaLocationPinLock /> Indore
+        </p>
+        <p className="flex items-center gap-2">
+          <FaRegMessage /> homemate.services@gmail.com
+        </p>
+        <p className="flex items-center gap-2">
+          <BsPhone /> +1800 854-36-80
+        </p>
       </div>
     </div>
-
-    <div className='pr-50 text-white'>
-      <p className='font-bold pb-4'>Company</p>
-        <ul>
-          <li>About Us</li>
-          <li>Careers</li>
-          <li>Services</li>
-          <li>Reviews</li>
-          <li>Contact Us</li>
-        </ul>
+  
+    {/* Right Section */}
+    <div className="text-white">
+      <p className="font-bold pb-2 sm:pb-4 text-lg">Company</p>
+      <ul className="text-sm sm:text-base space-y-2">
+        <li className='hover:font-bold cursor-pointer'>About Us</li>
+        <li className='hover:font-bold cursor-pointer'>Careers</li>
+        <li className='hover:font-bold cursor-pointer'>Services</li>
+        <li className='hover:font-bold cursor-pointer'>Reviews</li>
+        <li className='hover:font-bold cursor-pointer'>Contact Us</li>
+      </ul>
     </div>
-    </div>
+  </div>
+  
   )
 }
 

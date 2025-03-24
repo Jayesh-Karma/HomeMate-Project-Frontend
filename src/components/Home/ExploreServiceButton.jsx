@@ -5,9 +5,9 @@ const ExploreServiceButton = () =>{
 
     return(
         
-        <div className='my-5'>
-        <button className='flex gap-5 items-center bg-[#F9E400] font-medium text-xl py-2 px-4 rounded-4xl hover:bg-[#f9e400ea] transition-all ease-in-out'>
-            Explore Services <span className=''><FaArrowRightLong /></span>
+        <div className=' text-lg md:text-xl text-black font-semibold'>
+        <button className='flex items-center gap-3 bg-[#f9e400] py-2 px-4 rounded-4xl hover:bg-yellow-400 hover:scale-105 duration-100 transition-all ease-in-out'>
+            One Stop Home Solution <span className=''><FaArrowRightLong /></span>
         </button>
         </div>
     )
