@@ -8,6 +8,8 @@ import Login from './components/AuthPages/Login';
 import ServiceProvidersPage from './components/ServiceProvider/ServiceProvidersPage';
 import ServiceProviderDetailsPage from './components/ServiceProvider/ServiceProviderDetailsPage';
 import Signup from './components/AuthPages/Signup.jsx';
+import Error from './components/Extras/Error.jsx';
+import UserProfile from './components/ProfileComponent/UserProfile.jsx';
 
 function App() {
 
@@ -40,6 +42,10 @@ function App() {
 
         <Route path="/service-providers-by-service/:service" element={<ServiceProvidersPage/>} />
         <Route path="/service-provider-details/:serviceProviderId" element={ <ServiceProviderDetailsPage />} />
+      
+        <Route path="/user-profile" element={<UserProfile />} />
+
+        <Route path="*" element={<Error />} />
       </Routes>
     </>
   )

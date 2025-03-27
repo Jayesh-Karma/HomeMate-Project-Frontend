@@ -48,6 +48,7 @@ const MateCards = () => {
 }
 
 const ServiceCard = ({ service }) => {
+    console.log(service)
     return (
         <div className="group  w-60 mx-auto  bg-white rounded-2xl shadow-lg p-6 text-center hover:scale-105 hover:shadow-2xl transition-all ease-in duration-200 overflow-hidden my-8">
         {/* Profile Image */}
@@ -78,7 +79,9 @@ const ServiceCard = ({ service }) => {
         </div>
 
         {/* Profile Button */}
-        <button className="mt-4 bg-[#7C00FE] text-white px-4 py-2 rounded-full font-semibold shadow-md hover:bg-purple-400 hover:scale-105">
+        <button 
+        onClick={() => {window.location.href = `/service-provider-details/${service?._id}`}}
+        className="mt-4 bg-[#7C00FE] text-white px-4 py-2 rounded-full font-semibold shadow-md hover:bg-purple-400 hover:scale-105">
             See Profile
         </button>
     </div>

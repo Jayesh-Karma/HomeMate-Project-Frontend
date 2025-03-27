@@ -29,6 +29,13 @@ const ServiceProvidersPage = () => {
     }, [])
     console.log(users)
     return (
+    
+    <div className="w-full  overflow-x-hidden flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 box-border">
+
+    <div className='w-full'>
+        <Navbar />
+    </div>
+
     <div className=' mt-10 w-full flex justify-center items-center'>
       <div className=' w-[90%]'>
       
@@ -36,16 +43,17 @@ const ServiceProvidersPage = () => {
         {/* <img src="/images/carpenter.png" alt="" /> */}
 
         <div className='flex flex-col shadow-gray-500 shadow-2xs bg-[#7C00FE] border-gray-300 border p-2 px-4 rounded-4xl font-bold text-xl  items-center'>
-           <p className=' text-4xl font-extrabold text-white'>OUR MATES </p>
-           <p className='  text-xl text-gray-200 font-semibold'>Available <span className='text-[#FFE700]'>{service.toLocaleUpperCase()}S</span> on our platform</p>
+           <p className=' text-2xl md:text-3xl lg:text-4xl font-extrabold text-white'>OUR MATES </p>
+           <p className=' text-sm md:text-2xl lg:text-3xl text-gray-200 font-semibold'>Available <span className='text-[#FFE700]'>{service.toLocaleUpperCase()}S</span> on our platform</p>
         </div>
-        <ul className=' botton-0 mt-5 text-xs shadow-gray-400 shadow-2xl border border-gray-400 rounded-3xl text-gray-500  font-medium list-disc p-6'>
+
+        <ul className=' botton-0 mt-5 text-xs border border-gray-400 rounded-3xl text-gray-500  font-light list-disc p-6 '>
             <li>You can hire any service provider by checking there profile and previous work</li>
             <li>All Service Providers are verified and Registered</li>
             <li>You just have to select service provider, then they will call you directly</li>
         </ul>
             
-        <div>
+        <div className='flex items-center flex-wrap gap-5'>
             {
                 users?.map((user, index) => { return (
                     <div key={index} className="group hover:bg-[#7C00FE] bg-white mt-10  rounded-2xl shadow-lg p-6 w-72 text-center flex flex-col items-center border border-gray-200  text-black hover:scale-105 transition-all hover:shadow-2xl hover:shadow-gray-600">
@@ -87,6 +95,7 @@ const ServiceProvidersPage = () => {
       </div>
         
 
+    </div>
     </div>
   )
 }

@@ -39,14 +39,15 @@ const Navbar = () => {
     return (
       <>
         {/* Navbar for Large Screens */}
-        <div className="flex items-center justify-center border border-gray-200 px-4 py-2">
+        <div className="flex items-center justify-center border border-gray-200 px-4 py-2 rounded-b-xl shadow-sm">
           <div className="flex justify-between items-center w-[90%]">
             {/* Logo */}
             <div className="">
               <img 
                 src="/HOME_MATE-removebg-preview.png" 
                 alt="Logo" 
-                className="w-36 h-10 md:w-52 md:h-15"
+                className="w-36 h-10 md:w-52 md:h-15 cursore-pointer"
+                onClick={() => location.href = "/"}
               />
             </div>
   
@@ -62,13 +63,11 @@ const Navbar = () => {
                 <li className="hover:font-semibold hover:text-[#7C00FE] transition-all ease-in-out duration-100">
                   <Link to="/about">About</Link>
                 </li>
-                <li className="hover:font-semibold hover:text-[#7C00FE] transition-all ease-in-out duration-100">
-                  Team
-                </li>
+              
                 <li>
                     {
                         isLogin ? 
-                        <CgProfile className='text-3xl bg-black rounded-full text-yellow-300 hover:bg-white hover:text-[#7C00FE] transition-all duration-150 ease-in-out' /> : 
+                        <CgProfile onClick={ () => location.href = "/user-profile"} className='text-3xl bg-black rounded-full text-yellow-300 hover:bg-white hover:text-[#7C00FE] transition-all duration-150 ease-in-out' /> : 
                         <button 
                         onClick={() => location.href = "/login"}
                         className=' bg-yellow-300  text-black hover:bg-yellow-400 hover:scale-105 duration-100 transition-all ease-in-out p-2 px-4 border border-gray-500 rounded-xl'>

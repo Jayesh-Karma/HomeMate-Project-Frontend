@@ -22,7 +22,7 @@ const HomeHeroSection = () => {
       <h1 className="text-white">GO AHEAD !!!!</h1>
       
       <div className="mt-6">
-        <ExploreServiceButton />
+        {/* <ExploreServiceButton /> */}
       </div>
     </div>
 

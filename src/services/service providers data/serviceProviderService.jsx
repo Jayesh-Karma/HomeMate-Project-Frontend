@@ -44,3 +44,27 @@ export const getServiceProviderDetails = async(serviceProviderId) =>{
         return null;   
     }
 }
+
+//  get all details about service provider account
+export const getServiceProviderAccountDetails = async() =>{
+    try {
+        const user = await api.get(`/service/details`);
+        console.log(user);
+        return user.data;
+    } catch (error) {
+        console.log(error.message);  // toast.error(error.message);  // show error in toast
+        return null;   
+    }
+}
+
+//  get details of a service provider
+ export const getServiceProviderById = async(serviceProviderId) =>{
+    try {
+        const user = await api.get(`/search/get_service_provider_details/${serviceProviderId}`);
+        console.log(user);
+        return user.data;
+    } catch (error) {
+        console.log(error.message);  // toast.error(error.message);  // show error in toast
+        return null;   
+    }
+}
