@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Route, Routes, useLocation} from 'react-router-dom';
+import { Navigate, Route, Routes, useLocation} from 'react-router-dom';
 import Home from './components/Home/Home.jsx';
 import "./App.css";
 import About from './components/About/About';
@@ -43,12 +43,23 @@ function App() {
         <Route path="/service-providers-by-service/:service" element={<ServiceProvidersPage/>} />
         <Route path="/service-provider-details/:serviceProviderId" element={ <ServiceProviderDetailsPage />} />
       
-        <Route path="/user-profile" element={<UserProfile />} />
+      <Route path='/user-profile' element={
+      <PrivateRoute>
+        <UserProfile />
+      </PrivateRoute>
+      } />
+
 
         <Route path="*" element={<Error />} />
       </Routes>
     </>
   )
 }
+
+const PrivateRoute = ({ children }) => {
+  const token = localStorage.getItem("token"); // Check if token exists
+
+  return token ? children : <Navigate to="/login" replace />;
+};
 
 export default App

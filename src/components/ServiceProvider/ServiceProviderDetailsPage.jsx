@@ -46,7 +46,7 @@ const ServiceProviderDetailsPage = () => {
     <Navbar />
     </div>
 
-    <div className="container mx-auto p-6 md:p-12">
+    <div className="container mx-auto p-6 md:p-12 mt-20">
     
       <div className="bg-white shadow-lg shadow-[#7C00FE] rounded-lg p-6 md:p-10">
         <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
