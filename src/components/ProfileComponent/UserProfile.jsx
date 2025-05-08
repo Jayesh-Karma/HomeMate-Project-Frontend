@@ -1,53 +1,64 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { FaEdit, FaPlusCircle, FaTh } from 'react-icons/fa';
-import { LogOut } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { getServiceProviderAccountDetails } from '../../services/service providers data/serviceProviderService';
 import Loader from '../Extras/Loader';
-import Navbar from '../Extras/Navbar';
 import PostModal from '../PostComponent/PostModal';
+import UploadPost from '../PostComponent/UploadPost';
+import EditProfile from './EditProfile';
+import EditPost from '../PostComponent/EditPost';
+import { LogOutIcon } from 'lucide-react';
 
 const UserProfile = () => {
-  const { serviceProviderId } = useParams();
+  // const { serviceProviderId } = useParams();
+  // console.log(serviceProviderId);
   const navigate = useNavigate();
-
+  const [loading, setLoading] = useState();
   const [serviceProvider, setServiceProvider] = useState(null);
-  const [activeTab, setActiveTab] = useState('posts');
+  const [activeTab, setActiveTab] = useState('upload');
   const [selectedPost, setSelectedPost] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     const fetchServiceProvider = async () => {
+      setLoading(true);
       try {
-        const response = await getServiceProviderAccountDetails();
-        setServiceProvider(response.userDetails);
+        const userDetails = await getServiceProviderAccountDetails();
+        setServiceProvider(userDetails.userDetails);
       } catch (error) {
-        console.error('Error fetching service provider:', error);
+        console.error(error.message);
+        // toast.error(error.message); // for showing error if you want
+      } finally {
+        setLoading(false);
       }
     };
-    fetchServiceProvider();
-  }, [serviceProviderId]);
 
-  if (!serviceProvider) {
-    return <Loader />;
-  }
+    fetchServiceProvider();
+  }, []);
+
 
   const logoutHandler = () => {
     localStorage.removeItem('token');
+    if(localStorage.getItem('user')){localStorage.removeItem('user');}
+    else if(localStorage.getItem('serviceProvider')){localStorage.removeItem('serviceProvider');}
     toast.success('Logged Out Successfully');
     navigate('/login');
   };
+  
+  
+  if (loading) {
+    return <Loader />;
+  }
 
   return (
-    <div className=' bg-red-700'>
+    <div className=''>
 
     <div className="min-h-screen  bg-gray-300 px-4 md:px-10 lg:px-20 py-10">
-      {/* Navbar */}
-      <Navbar />
+
 
       {/* Profile Section */}
-      <div className="mt-20 max-w-5xl mx-auto bg-white shadow-lg rounded-xl p-6">
+      <div className=" max-w-5xl mx-auto bg-white shadow-lg rounded-xl p-6">
         <div className="flex flex-col md:flex-row items-center gap-6">
           <img
             src={serviceProvider?.profileImgUrl}
@@ -56,8 +67,9 @@ const UserProfile = () => {
           />
           <div className="text-center md:text-left">
             <h2 className="text-2xl font-semibold text-gray-900">{serviceProvider?.name}</h2>
-            <p className="text-gray-500 font-medium mt-1">{serviceProvider?.role.toUpperCase()} - {serviceProvider?.city}</p>
-            <p className="text-gray-700 mt-2">{serviceProvider?.serviceDetails}</p>
+            <p className="text-gray-500 font-medium mt-1">{serviceProvider?.role.toUpperCase()} - {serviceProvider?.city.toUpperCase()}</p>
+            <p className="text-gray-700 mt-1 font-semibold">{serviceProvider?.serviceDetails}</p>
+            <p className="text-gray-500 mt-2 "> {serviceProvider?.bio}</p>
           </div>
         </div>
       </div>
@@ -82,6 +94,14 @@ const UserProfile = () => {
         </button>
         <button
           className={`flex items-center gap-2 px-4 py-2 rounded transition ${
+            activeTab === 'editPost' ? 'bg-indigo-600 text-white' : 'text-gray-700 hover:bg-gray-200'
+          }`}
+          onClick={() => setActiveTab('editPost')}
+        >
+          <FaPlusCircle /> Edit Post
+        </button>
+        <button
+          className={`flex items-center gap-2 px-4 py-2 rounded transition w-fit ${
             activeTab === 'posts' ? 'bg-indigo-600 text-white' : 'text-gray-700 hover:bg-gray-200'
           }`}
           onClick={() => setActiveTab('posts')}
@@ -89,17 +109,19 @@ const UserProfile = () => {
           <FaTh /> Posts
         </button>
         <button
-          className="flex items-center gap-2 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition"
+          className={`flex items-center gap-2 px-4 py-2 rounded transition w-fit hover:text-red-600`}
           onClick={logoutHandler}
         >
-          <LogOut /> Logout
+          <LogOutIcon /> Logout
         </button>
+   
       </div>
 
       {/* Dynamic Content */}
       <div className="max-w-5xl mx-auto mt-6">
         {activeTab === 'edit' && <EditProfile />}
         {activeTab === 'upload' && <UploadPost />}
+        {activeTab === 'editPost' && <EditPost />}
         {activeTab === 'posts' && (
           <PostGrid posts={serviceProvider.workProof} setSelectedPost={setSelectedPost} setIsOpen={setIsOpen} />
         )}
@@ -112,15 +134,7 @@ const UserProfile = () => {
   );
 };
 
-// Edit Profile Placeholder
-const EditProfile = () => (
-  <div className="p-6 bg-white shadow-md rounded-md text-center text-gray-600">Edit Profile Feature Coming Soon!</div>
-);
 
-// Upload Post Placeholder
-const UploadPost = () => (
-  <div className="p-6 bg-white shadow-md rounded-md text-center text-gray-600">Upload Post Feature Coming Soon!</div>
-);
 
 // Post Grid with Improved UI
 const PostGrid = ({ posts, setSelectedPost, setIsOpen }) => (

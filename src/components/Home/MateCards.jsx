@@ -48,7 +48,7 @@ const MateCards = () => {
 }
 
 const ServiceCard = ({ service }) => {
-    console.log(service)
+    // console.log(service)
     return (
         <div className="group  w-60 mx-auto  bg-white rounded-2xl shadow-lg p-6 text-center hover:scale-105 hover:shadow-2xl transition-all ease-in duration-200 overflow-hidden my-8">
         {/* Profile Image */}

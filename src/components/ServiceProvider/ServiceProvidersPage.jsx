@@ -31,14 +31,14 @@ const ServiceProvidersPage = () => {
 
   return (
     <div className="w-full overflow-x-hidden flex flex-col items-center px-4 bg-gray-200 sm:px-6 lg:px-8">
-      <Navbar />
+    
       {loader ? (
         <div className="flex justify-center items-center min-h-screen">
           <Loader className="animate-spin text-gray-500" size={40} />
         </div>
       ) : (
         <div className="w-full min-h-screen bg-gray-200">
-          <HeroSection title="Our Service Providers" />
+            <HeroSection title="Our Service Providers" />
           <div className="containermx-auto p-6 flex flex-col md:flex-row gap-6">
             <FilterSection />
             <ProviderList users={users} />
@@ -93,7 +93,7 @@ const FilterSection = () => {
 
 // ✅ Provider List (Handles Empty State)
 const ProviderList = ({ users }) => (
-  <div className="w-full md:w-3/4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+  <div className="w-full md:w-3/4 grid grid-cols-1 lg:grid-cols-3 gap-6">
     {users.length > 0 ? (
       users.map((provider, idx) => <ServiceProviderCards key={idx} service={provider} />)
     ) : (

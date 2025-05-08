@@ -22,7 +22,7 @@ const HomeHeroSection = () => {
           
           {/* CTA Button */}
           <div className="mt-8">
-            <button className="bg-white  text-[#7C00FE] text-xl font-bold px-6 py-3 rounded-full shadow-lg hover:shadow-2xl transition-transform transform hover:scale-105">
+            <button className="bg-white hover:bg-transparent hover:border-2 hover:border-white hover:text-white   text-[#7C00FE] text-xl font-bold px-6 py-3 rounded-full shadow-lg hover:shadow-2xl transition-transform transform hover:scale-103">
               Explore Services
             </button>
           </div>

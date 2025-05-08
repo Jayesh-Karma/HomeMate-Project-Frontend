@@ -42,13 +42,13 @@ const AllServiceSection = () => {
           </div>
         ))}
 
-        {/* "Coming Soon" Placeholder */}
+        {/* "Coming Soon" Placeholder
         <div className="bg-gray-100 rounded-2xl p-6 flex flex-col items-center text-center shadow-md hover:shadow-lg transition-transform transform hover:-translate-y-2">
           <div className="w-24 h-24 sm:w-28 sm:h-28 lg:w-32 lg:h-32 flex items-center justify-center rounded-full bg-gray-200 text-gray-500 text-5xl sm:text-6xl lg:text-7xl">
             <IoIosTimer />
           </div>
           <h3 className="mt-4 text-lg sm:text-xl font-semibold text-gray-500">Coming Soon</h3>
-        </div>
+        </div> */}
       </div>
     </div>
   );

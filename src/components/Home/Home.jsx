@@ -15,7 +15,7 @@ const Home = () => {
     <div className="w-full overflow-x-hidden flex flex-col items-center px-4 sm:px-6 lg:px-8">
       
       {/* ✅ Navbar */}
-      <Navbar />
+      {/* <Navbar /> */}
 
       {/* ✅ Hero Section */}
       <HomeHeroSection />
@@ -46,14 +46,7 @@ const Home = () => {
       </section>
 
     </div>
-      <footer className="w-full bg-[#7C00FE] py-5">
-        <Footer />
-      </footer>
-
-      <div className="w-full bg-[#FFE700] py-5 text-center">
-        <p className="text-black font-semibold">All Rights Reserved HomeMate@2025</p>
-        <p className="text-gray-800 text-xs">Made with Love By Jayesh & Roshan ❤️</p>
-      </div>
+    
 
     </div>
   );

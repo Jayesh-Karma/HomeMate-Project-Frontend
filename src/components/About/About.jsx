@@ -12,10 +12,7 @@ const About = () => {
 
   <div className="w-full  overflow-x-hidden flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 box-border">
   
-  {/* Navbar Section */}
-      <div className="w-full">
-        <Navbar />
-      </div>
+
     <section className="max-w-4xl mx-auto px-5 py-10 text-center">
     {/* Header */}
     <h2 className="text-3xl font-bold text-gray-800">About Us</h2>
@@ -54,18 +51,7 @@ Our platform is built with a customer-first approach, ensuring that users can ea
     </div>
   </section>
     </div>
-  
-  <div className="w-full flex items-center justify-center mt-10 bg-[#7C00FE] py-5">
-    <Footer />
-  </div>
 
-  {/* Copyright Section */}
-  <div className="w-full flex items-center justify-center bg-[#FFE700] py-5">
-    <div className="w-[90%] max-w-screen-xl text-center p-5 flex flex-col items-center justify-center">
-      <p className="text-black font-semibold">All Rights Reserved HomeMate@2025</p>
-      <p className="text-gray-800 text-xs">Made with Love By Jayesh & Roshan ❤️</p>
-    </div>
-  </div>
     </div>
   )
 }

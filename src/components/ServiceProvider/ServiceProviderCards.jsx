@@ -7,7 +7,7 @@ const ServiceProviderCards = ({service}) => {
   const navigate = useNavigate();
   console.log()
   return (
-          <div className="group  w-60 mx-auto  bg-white rounded-2xl shadow-lg p-6 text-center hover:scale-105 hover:shadow-2xl transition-all ease-in duration-200 overflow-hidden my-8">
+          <div className="group w-full mx-auto  bg-white rounded-2xl shadow-lg p-6 text-center hover:scale-105 hover:shadow-2xl transition-all ease-in duration-200 overflow-hidden">
           {/* Profile Image */}
           <div className="relative w-24  mx-auto mb-4">
               <img

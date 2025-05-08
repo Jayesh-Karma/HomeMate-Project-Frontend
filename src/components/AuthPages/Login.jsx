@@ -1,4 +1,4 @@
-import { EyeClosed } from 'lucide-react'
+import { ArrowLeftSquare, EyeClosed, Loader } from 'lucide-react'
 import React, { useState } from 'react'
 import { RxEyeClosed, RxEyeOpen } from 'react-icons/rx';
 import { loginProvider } from '../../services/service providers data/serviceProviderService';
@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const navigate = useNavigate();
+    const [loading, setLoading] = useState(false);
     const [ loginData, setLoginData ] = useState({
         email: '',
         password: ''
@@ -25,21 +26,28 @@ const Login = () => {
 
     
     const handleLogin = async(event) => {
+        setLoading(true);
         event.preventDefault();
 
-        // calling api
-        const users = await loginProvider(loginData.email, loginData.password);
-        console.log(users);
-        if(!users){
-            toast.error("Error in login try again later");
-            navigate("/login");   
-        }
-        else{
+        
+        try{
+            // calling api
+            const users = await loginProvider(loginData.email, loginData.password);
+            console.log(users);
             // axios.defaults.headers.common["Authorization"] = `Bearer ${users.token}`;
+            localStorage.setItem("serviceProvider", JSON.stringify(users.userData));
             localStorage.setItem("token", users.token);
             toast.success("Login Successful");
             navigate("/")
-            location.reload();
+            window.location.reload();
+        }
+        catch(error){
+            console.log(error);
+            toast.error("Error in login try again later");
+            navigate("/login");
+        }
+        finally{
+            setLoading(false);
         }
     }
   return (
@@ -51,11 +59,12 @@ const Login = () => {
     
     <div className='w-[90%] min-h-screen'>
 
-        <div className='w-full lg:w-[30vw] min-h-screen flex justify-center items-center'>
+        <div className='w-full lg:w-[30vw] min-h-[550px] flex justify-center items-center'>
             <div className="w-full sm:w-[90%] md:w-[50%] lg:w-[30vw] bg-white p-6 md:p-10 shadow-2xl rounded-2xl">
-                <h1 className="text-2xl md:text-3xl text-black font-medium font-[Poppins]">
-                    Login Here
-                </h1>
+                <div className="text-2xl md:text-3xl text-black font-medium font-[Poppins] flex gap-2 items-center">
+                    <span className=" text-xs text-gray-500 cursor-pointer hover:text-[#7C00FE]" onClick={() => navigate(-1)}><ArrowLeftSquare /> </span>
+                    Login As a Service Provider
+                </div>
                 <form className='mt-8 flex flex-col gap-5'>
                     <div>
                         <label className='block text-sm text-[#7C00FE]'>Email</label>
@@ -85,7 +94,7 @@ const Login = () => {
                         className='text-white cursor-pointer  bg-[#7C00FE] rounded-4xl w-full p-3 font-bold '
                         onClick={handleLogin}
                         >
-                            Login
+                            {loading ? <Loader className='animate-spin' /> : "Login"}
                         </button>
 
                         <div>

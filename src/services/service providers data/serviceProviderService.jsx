@@ -9,7 +9,18 @@ export const loginProvider = async(email, password) => {
         console.log(users.data);
         return users.data;
     } catch (error) {
-        return null;
+        throw new Error(error?.response?.data?.message || "Failed to login");
+    }
+}
+
+export const signupServiceProvider = async(signupData) => {
+    try {
+        const signup = await api.post('/service/register', signupData);
+        console.log(signup);
+        return signup.data;
+    } catch (error) {
+        console.error(error);
+        return new Error(error);
     }
 }
 
@@ -46,16 +57,15 @@ export const getServiceProviderDetails = async(serviceProviderId) =>{
 }
 
 //  get all details about service provider account
-export const getServiceProviderAccountDetails = async() =>{
+export const getServiceProviderAccountDetails = async () => {
     try {
-        const user = await api.get(`/service/details`);
-        console.log(user);
-        return user.data;
+      const response = await api.get('/service/details');
+      return response.data;  // only return data
     } catch (error) {
-        console.log(error.message);  // toast.error(error.message);  // show error in toast
-        return null;   
+      throw new Error(error?.response?.data?.message || "Failed to fetch service provider details");
     }
-}
+  };
+
 
 //  get details of a service provider
  export const getServiceProviderById = async(serviceProviderId) =>{
@@ -68,3 +78,21 @@ export const getServiceProviderAccountDetails = async() =>{
         return null;   
     }
 }
+
+
+export const editProfile = async(data) => {
+    try {
+        const edits = await api.put(`/service/edit`, data);
+        console.log(edits);
+        return edits.data;
+    } catch (error) {
+        console.error(error);
+        return null;
+    }
+}
+
+export const uploadPost = async(data) => {
+        const post = await api.post(`/service/upload_post`, data);
+        return post.data;
+}
+
